@@ -100,6 +100,48 @@ function authenticate() {
 
 
 
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        var name = user.displayName;
+
+        /* If the provider gives a display name, use the name for the
+        personal welcome message. Otherwise, use the user's email. */
+        var welcomeName = name ? name : user.email;
+
+        userIdToken = user.getIdToken();
+
+
+    }
+});
+
+
+
+
+
+firebase.auth().createCustomToken(uid)
+    .then(customToken =>
+        // Response must be an object or Firebase errors
+        res.json({ firebaseToken: customToken })
+    )
+    .catch(err =>
+        res.status(500).send({
+            message: 'Something went wrong acquiring a Firebase token.',
+            error: err
+        })
+    );
+
+
+
+
+
+
+
+
+
+
+
+
+
 var db = firebase.firestore();
 db.settings({ timestampsInSnapshots: true });
 var fechayhora;
