@@ -82,7 +82,7 @@ function otramaneralogin() {
 
     var uiConfig = {
         signInFlow: 'popup',
-        signInSuccessUrl: '#inicio',
+        signInSuccessUrl: 'index.html#inicio',
 
         signInOptions: [
             // Leave the lines as is for the providers you want to offer your users.
@@ -97,10 +97,10 @@ function otramaneralogin() {
         // tosUrl and privacyPolicyUrl accept either url string or a callback
         // function.
         // Terms of service url/callback.
-        tosUrl: 'index.html',
+        tosUrl: 'index.html#inicio',
         // Privacy policy url/callback.
         privacyPolicyUrl: function() {
-            window.location.assign('#inicio');
+            window.location.assign('index.html#inicio');
         }
     };
 
