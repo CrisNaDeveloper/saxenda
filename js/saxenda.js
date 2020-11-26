@@ -32,7 +32,7 @@ function otramaneralogin() {
 
     var uiConfig = {
         signInFlow: 'popup',
-        signInSuccessUrl: 'logado.html',
+        signInSuccessUrl: 'index.html#inicio',
 
         signInOptions: [
             // Leave the lines as is for the providers you want to offer your users.
