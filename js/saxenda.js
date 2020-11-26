@@ -30,7 +30,9 @@ var config = {
 
 
 
-
+if (!app.apps.length) {
+    app.initializeApp(config);
+}
 
 var db = firebase.firestore();
 db.settings({ timestampsInSnapshots: true });
