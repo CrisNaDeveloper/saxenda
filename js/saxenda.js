@@ -30,9 +30,75 @@ var config = {
 
 
 
-if (!app.apps.length) {
-    app.initializeApp(config);
+if (!firebase.apps.length) {
+    firebase.initializeApp(config);
+    var db = firebase.firestore();
+    otramaneralogin();
+
+
+    //logarse("email");
+    authenticate().then(loadClient);
+
+
+
 }
+
+function otramaneralogin() {
+
+    alert("paso");
+    firebase.auth().useDeviceLanguage();
+
+    var uiConfig = {
+        signInFlow: 'popup',
+        signInSuccessUrl: '#inicio',
+
+        signInOptions: [
+            // Leave the lines as is for the providers you want to offer your users.
+            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+            firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+            //     firebase.auth.GithubAuthProvider.PROVIDER_ID,
+            firebase.auth.EmailAuthProvider.PROVIDER_ID,
+            //     firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+            //   firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
+        ],
+        // tosUrl and privacyPolicyUrl accept either url string or a callback
+        // function.
+        // Terms of service url/callback.
+        tosUrl: 'index.html',
+        // Privacy policy url/callback.
+        privacyPolicyUrl: function() {
+            window.location.assign('#inicio');
+        }
+    };
+
+    // Initialize the FirebaseUI Widget using Firebase.
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    // The start method will wait until the DOM is loaded.
+    ui.start('#firebaseui-auth-container', uiConfig);
+
+}
+
+function authenticate() {
+
+
+    // get the credentials from the google auth response
+    var idToken = firebase.auth().currentUser.getIdToken();
+    var creds = firebase.auth.GoogleAuthProvider.credential(idToken);
+
+
+    // auth in the user 
+    firebase.auth().signInWithCredential(creds).then((user) => {
+        // you can use (user) or googleProfile to setup the user
+        var googleProfile = googleUser.getBasicProfile()
+        if (user) {
+            // do something with this user
+        }
+    })
+}
+
+
+
 
 var db = firebase.firestore();
 db.settings({ timestampsInSnapshots: true });
