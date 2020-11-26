@@ -24,6 +24,57 @@ if (!firebase.apps.length) {
 
 }
 
+function authenticate() {
+
+
+    // get the credentials from the google auth response
+    var idToken = firebase.auth().currentUser.getIdToken();
+    var creds = firebase.auth.GoogleAuthProvider.credential(idToken);
+
+
+    // auth in the user 
+    firebase.auth().signInWithCredential(creds).then((user) => {
+        // you can use (user) or googleProfile to setup the user
+        var googleProfile = googleUser.getBasicProfile()
+        if (user) {
+            // do something with this user
+        }
+    })
+}
+
+
+
+
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        var name = user.displayName;
+
+        /* If the provider gives a display name, use the name for the
+        personal welcome message. Otherwise, use the user's email. */
+        var welcomeName = name ? name : user.email;
+
+        userIdToken = user.getIdToken();
+
+
+    }
+});
+
+
+
+
+
+firebase.auth().createCustomToken(uid)
+    .then(customToken =>
+        // Response must be an object or Firebase errors
+        res.json({ firebaseToken: customToken })
+    )
+    .catch(err =>
+        res.status(500).send({
+            message: 'Something went wrong acquiring a Firebase token.',
+            error: err
+        })
+    );
+
 function otramaneralogin() {
 
     alert("paso");
@@ -60,50 +111,6 @@ function otramaneralogin() {
 
 }
 
-function authenticate() {
-
-
-    // get the credentials from the google auth response
-    var idToken = firebase.auth().currentUser.getIdToken();
-    var creds = firebase.auth.GoogleAuthProvider.credential(idToken);
-
-
-    // auth in the user 
-    firebase.auth().signInWithCredential(creds).then((user) => {
-        // you can use (user) or googleProfile to setup the user
-        var googleProfile = googleUser.getBasicProfile()
-        if (user) {
-            // do something with this user
-        }
-    })
-}
-
-
-
-
-
-
-firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-        user.getIdToken().then(function(data) {
-            console.log(data)
-        });
-    }
-});
-
-
-
-firebase.auth().createCustomToken(uid)
-    .then(customToken =>
-        // Response must be an object or Firebase errors
-        res.json({ firebaseToken: customToken })
-    )
-    .catch(err =>
-        res.status(500).send({
-            message: 'Something went wrong acquiring a Firebase token.',
-            error: err
-        })
-    );
 
 
 
