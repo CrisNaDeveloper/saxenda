@@ -27,12 +27,12 @@ if (!firebase.apps.length) {
 
 function otramaneralogin() {
 
-    alert("otramanera");
+
     firebase.auth().useDeviceLanguage();
 
     var uiConfig = {
         signInFlow: 'popup',
-        signInSuccessUrl: 'index#inicio',
+        signInSuccessUrl: 'logado.html',
 
         signInOptions: [
             // Leave the lines as is for the providers you want to offer your users.
@@ -47,10 +47,10 @@ function otramaneralogin() {
         // tosUrl and privacyPolicyUrl accept either url string or a callback
         // function.
         // Terms of service url/callback.
-        tosUrl: 'index#inicio',
+        tosUrl: 'terminos.html',
         // Privacy policy url/callback.
         privacyPolicyUrl: function() {
-            window.location.assign('index#inicio');
+            window.location.assign('terminos.html');
         }
     };
 
