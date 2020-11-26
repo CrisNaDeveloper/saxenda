@@ -47,7 +47,7 @@ function otramaneralogin() {
         // tosUrl and privacyPolicyUrl accept either url string or a callback
         // function.
         // Terms of service url/callback.
-        tosUrl: 'index.html',
+        tosUrl: '#inicio',
         // Privacy policy url/callback.
         privacyPolicyUrl: function() {
             window.location.assign('#inicio');
