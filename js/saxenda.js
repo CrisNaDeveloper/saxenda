@@ -32,7 +32,7 @@ function otramaneralogin() {
 
     var uiConfig = {
         signInFlow: 'popup',
-        signInSuccessUrl: 'index#inicio',
+        signInSuccessUrl: 'index.html#inicio',
 
         signInOptions: [
             // Leave the lines as is for the providers you want to offer your users.
@@ -61,86 +61,42 @@ function otramaneralogin() {
 
 }
 
-function logarse(provider) {
 
 
+function desconectar() {
 
-    firebase.auth().useDeviceLanguage();
+    firebase.auth().signOut().then(function() {
+        alertify.success("desconectado");
 
-    if (provider == "google") {
-        provider = new firebase.auth.GoogleAuthProvider();
-
-
-    }
-    if (provider == "facebook") {
-        provider = new firebase.auth.FacebookAuthProvider();
-    }
-
-    if (provider == "email") {
-        provider = new firebase.auth.EmailAuthProvider();
-    }
-    // Step 1.
-    // User tries to sign in to Google.
-    firebase.auth().signInWithPopup(provider).catch(function(error) {
-        // An error happened.
-        if (error.code === 'auth/account-exists-with-different-credential') {
-            // Step 2.
-            // User's email already exists.
-            // The pending Google credential.
-            var pendingCred = error.credential;
-            // The provider account's email address.
-            var email = error.email;
-            // Get sign-in methods for this email.
-            firebase.auth().fetchSignInMethodsForEmail(email).then(function(methods) {
-                // Step 3.
-                // If the user has several sign-in methods,
-                // the first method in the list will be the "recommended" method to use.
-                if (methods[0] === 'password') {
-                    // Asks the user their password.
-                    // In real scenario, you should handle this asynchronously.
-                    var password = promptUserForPassword(); // TODO: implement promptUserForPassword.
-                    firebase.auth().signInWithEmailAndPassword(email, password).then(function(user) {
-                        // Step 4a.
-                        return user.linkWithCredential(pendingCred);
-                    }).then(function() {
-                        // Google account successfully linked to the existing Firebase user.
-                        goToApp();
-                    });
-                    return;
-                }
-                // All the other cases are external providers.
-                // Construct provider object for that provider.
-                // TODO: implement getProviderForProviderId.
-                var provider = getProviderForProviderId(methods[0]);
-                // At this point, you should let the user know that they already has an account
-                // but with a different provider, and let them validate the fact they want to
-                // sign in with this provider.
-                // Sign in to provider. Note: browsers usually block popup triggered asynchronously,
-                // so in real scenario you should ask the user to click on a "continue" button
-                // that will trigger the signInWithPopup.
-                firebase.auth().signInWithPopup(provider).then(function(result) {
-                    // Remember that the user may have signed in with an account that has a different email
-                    // address than the first one. This can happen as Firebase doesn't control the provider's
-                    // sign in flow and the user is free to login using whichever account they own.
-                    // Step 4b.
-                    // Link to Google credential.
-                    // As we have access to the pending credential, we can directly call the link method.
-                    result.user.linkAndRetrieveDataWithCredential(pendingCred).then(function(usercred) {
-                        // Google account successfully linked to the existing Firebase user.
-                        goToApp();
-                    });
-                });
-            });
-        }
+        $.mobile.changePage("#login", {
+            transition: "slide",
+            reverse: true
+        });
+    }).catch(function(error) {
+        alertify.error("ha habido un error" + error);
     });
-
 }
 
+
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        var name = user.displayName;
+
+        /* If the provider gives a display name, use the name for the
+        personal welcome message. Otherwise, use the user's email. */
+        var welcomeName = name ? name : user.email;
+
+        userIdToken = user.getIdToken();
+
+
+    }
+});
 
 
 var db = firebase.firestore();
 db.settings({ timestampsInSnapshots: true });
 var fechayhora;
+var fecha;
 var timestamp;
 var offset;
 
@@ -173,7 +129,7 @@ function damefechayhora(snap) {
     }
 
     fechayhora = day + "/" + month + "/" + year + " " + curr_hour + ":" + curr_min + ":" + curr_sec;
-
+    fecha = day + "/" + month + "/" + year;
     //$("#fecha").append(" " + fechayhora);
 
 
@@ -209,24 +165,36 @@ function errorfecha(e) {
 
     console.log("error" + e);
 }
+$(function() {
+    alert(fecha);
+    $('#fecha').val(fecha);
+    $("#pinchar").click(function() {
+
+
+        var email = firebase.auth().currentUser.email;
+        alta(email);
+
+    });
+
+});
 
 
 
 
 
 
-
-
-
-
-function alta() {
+function alta(email) {
+    var cantidad = $('#cantidad').val();
+    var fecha = $('#fecha').val();
+    var peso = $('#peso').val();
+    alert(cantidad);
 
     db.collection("saxenda").add({
             email: email,
             cantidad: cantidad,
-            fecha: fechayhora,
-            otros: coordenadas,
-            ocupacion_actual: ocupacion_actual,
+            peso: peso,
+            fechareal: fechayhora,
+            fecha: fecha
 
         })
         .then(function(docRef) {

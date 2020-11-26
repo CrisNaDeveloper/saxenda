@@ -47,12 +47,12 @@
 
 </head>
 
-<body data-theme="b">
+<body data-theme="a">
 
     <!--LOGIN-->
-    <div data-role="page" id="login">
-        <div data-role="header" data-theme="b">Saxenda: Login</div>
-        <div data-role="content" data-theme="b">
+    <div data-role="page" id="login" data-theme="a">
+        <div data-role="header" data-theme="a">Saxenda: Login</div>
+        <div data-role="content" data-theme="a">
 
 
             <div id="firebaseui-auth-container"></div>
@@ -62,29 +62,26 @@
     </div>
 
     <!-- PAGINA INICIO-->
-    <div data-role="page" id="inicio">
+    <div data-role="page" id="inicio" data-theme="a">
 
-        <div data-role="header" data-theme="b">
+        <div data-role="header" data-theme="a">
             <a onclick="desconectar()" data-role="button" data-theme="b" data-icon="power" data-iconpos="notext" class="ui-btn-right"> </a>
-            <label for='usuario' id='usu'> </label>
+            <label for='usuario' id='usuario'> </label>
         </div>
 
-        <div data-role="content" data-theme="b">
-            <input type="text" data-role="date">
+        <label for="date-1">Fecha:</label>
 
+        <input type="date" data-clear-btn="false" name="fecha" id="fecha" value="" data-theme="a">
+
+        <div data-role="rangeslider" data-mini="true" data-theme="a">
+            <label for="cantidad">Cantidad:</label>
+            <input type="range" name="cantidad" id="cantidad" step=".6" min="0.6" max="3" value="0.6">
         </div>
+        <label for="date-1">Peso:</label>
+        <input type="text" data-clear-btn="false" name="peso" id="peso" value="" data-theme="a">
+        <a href="#" class="ui-btn ui-icon-check ui-btn-icon-left" id="pinchar" name="pinchar">Pinchar</a>
 
-        <div data-role="rangeslider">
-
-            <div data-role="rangeslider" data-mini="true">
-                <label for="range-4a">Cantidad:</label>
-                <input type="range" name="range-4a" id="range-4a" step=".6" min="0.6" max="3" value="0.6">
-
-            </div>
-        </div>
     </div>
-
-
 </body>
 
 </html>
