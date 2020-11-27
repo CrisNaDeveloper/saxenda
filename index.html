@@ -56,6 +56,47 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <title>Saxenda</title>
     <!--funcion para saber si ya esta logado-->
+    <script>
+        function initApp() {
+            // Listening for auth state changes. 
+            // [START authstatelistener] 
+            firebase.auth().onAuthStateChanged(function(user) {
+
+                if (user) {
+
+                    email = user.email;
+
+                    $.mobile.changePage("#inicio", {
+                        transition: "slide",
+                        reverse: true
+                    });
+
+                } else {
+
+
+                    $.mobile.changePage("#login", {
+                        transition: "slide",
+                        reverse: true
+                    });
+
+
+                }
+
+            });
+        }
+
+
+        window.onload = function() {
+            initApp();
+            $('#fecha').val(fecha);
+            // otramaneralogin();
+
+        };
+    </script>
+
+
+
+
 
 </head>
 
