@@ -166,7 +166,7 @@ function errorfecha(e) {
     console.log("error" + e);
 }
 $(function() {
-    alert(fecha);
+
     $('#fecha').val(fecha);
     $("#pinchar").click(function() {
 
@@ -180,14 +180,22 @@ $(function() {
 
 
 
+function verhistorico() {
+    var email = firebase.auth().currentUser.email;
+    cargaresultado(email);
+    $.mobile.changePage("#resultados", {
+        transition: "slide",
+        reverse: true
+    })
 
+}
 
 
 function alta(email) {
     var cantidad = $('#cantidad').val();
     var fecha = $('#fecha').val();
     var peso = $('#peso').val();
-    alert(cantidad);
+
 
     db.collection("saxenda").add({
             email: email,
@@ -265,6 +273,31 @@ function actualizar(email, fecha, cantidad) {
 
 
 
+function cargaresultado(email) {
+    $("#tbodyresultado").empty();
+
+    let res = "";
+
+    db.collection("saxenda").where("email", "==", email).get()
+        .then((querySnapshot) => {
+
+            querySnapshot.forEach((doc) => {
+
+
+                res = doc.data();
+
+                $("#tbodyresultado").append("<tr id='trdentro'><td >" + res.fecha + "<td>" + res.cantidad + "</td><td>" + res.peso + "</td></tr>");
+
+                $("#tbodyresultado").trigger("create");
+                $("#tablaresultados").table("refresh");
+
+            });
+
+            $("#tbodyresultado").trigger("create");
+        });
+
+}
+
 //CARGA DE DATOS DE JSON
 /*
 const collectionKey = "aforo";
@@ -273,6 +306,5 @@ var coleccion = db.collection(collectionKey);
 for(var elemento in data[0]){
 coleccion.doc(elemento).set(data[0][elemento]);
 
-}
-}
+}   
 */

@@ -14,14 +14,19 @@
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-storage.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
-    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
     <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth__es.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
-    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.icons.min.css" />
 
+
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.icons.min.css" />
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
+    <script type="text/javascript" src="http://dev.jtsage.com/cdn/spinbox/latest/jqm-spinbox.min.js"></script>
 
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js">
     </script>
@@ -30,8 +35,9 @@
 
     <link rel="stylesheet" href="themes/alertify.core.css" />
     <link rel="stylesheet" href="themes/alertify.default.css" id="toggleCSS" />
+    <link rel="stylesheet" href="css/saxenda.css" />
 
-    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+
     <script src="lib/alertify.min.js">
     </script>
 
@@ -73,15 +79,73 @@
 
         <input type="date" data-clear-btn="false" name="fecha" id="fecha" value="" data-theme="a">
 
-        <div data-role="rangeslider" data-mini="true" data-theme="a">
-            <label for="cantidad">Cantidad:</label>
-            <input type="range" name="cantidad" id="cantidad" step=".6" min="0.6" max="3" value="0.6">
+
+
+
+        <div class="ui-field-contain " data-theme="a" data-position="fixed">
+
+            <label for="spin6">Cantidad:</label>
+
+            <input type="text" data-mini="true" data-role="spinbox" name="spin6" id="cantidad" data-options='{"type":"vertical"}' step=".6" min="0.6" max="3" value="0.6" />
+
         </div>
-        <label for="date-1">Peso:</label>
-        <input type="text" data-clear-btn="false" name="peso" id="peso" value="" data-theme="a">
+
+        <label for="peso">Mi Peso hoy:</label>
+
+        <input type="range" name="peso" id="peso" data-highlight="true" min="0" max="200" value="68">
+
         <a href="#" class="ui-btn ui-icon-check ui-btn-icon-left" id="pinchar" name="pinchar">Pinchar</a>
+        <a href="#" id="resultados" onclick="verhistorico()" class="ui-btn ui-btn-inline  ui-btn-icon-bullets">Ver Histórico</a>
 
     </div>
+
+
+
+
+    <!---VER resultados estadistidas-->
+
+    <div data-role="page" data-theme="a" id="resultados">
+
+        <div data-role="header" data-theme="a">Histórico de resultados</div>
+
+        <table data-role="table" data-theme="a" id="tablaresultados" data-mode="columntoggle" class="ui-responsive ui-body-d table-stripe" data-column-btn-text="Selecione Filtro" data-column-btn-theme="a">
+            <thead>
+                <tr class='ui-bar-a' id='trtest'>
+
+                    <th data-priority='1'>
+                        <h4>Fecha</h4>
+                    </th>
+                    <th data-priority='2'>
+                        <h4>Cantidad</h4>
+                    </th>
+                    <th data-priority='3'>
+                        <h4>Peso</h4>
+                    </th>
+
+
+                </tr>
+            </thead>
+            <tbody id='tbodyresultado'>
+            </tbody>
+        </table>
+
+
+        <div data-role="footer" data-theme="a" data-position="fixed">
+
+            <div class="ui-navbar" role="navigation" data-role="navbar" data-theme="a" data-mini="true">
+                <ul class="ui-grid-d">
+                    <li class="ui-block-a"><a href="#inicio" data-role="button" data-transition="flip" data-icon="back">Volver</a></li>
+
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!--FIN resultados estadistidas-->
+
 </body>
 
 </html>
