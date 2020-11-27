@@ -84,14 +84,6 @@
 
             });
         }
-
-
-        window.onload = function() {
-            initApp();
-            $('#fecha').val(fecha);
-            // otramaneralogin();
-
-        };
     </script>
 
 
@@ -124,7 +116,7 @@
 
         <label for="date-1">Fecha:</label>
 
-        <input type="date" data-clear-btn="false" name="fecha" id="fecha" value="" data-theme="a">
+        <input type="date" data-clear-btn="false" name="fecha" id="fecha" value="date" data-theme="a">
 
 
 
@@ -133,7 +125,7 @@
 
             <label for="spin6">Cantidad:</label>
 
-            <input type="text" data-mini="true" data-role="spinbox" name="spin6" id="cantidad" data-options='{"type":"vertical"}' step=".6" min="0.6" max="3" value="0.6" />
+            <input type="text" data-mini="true" data-role="spinbox" name="spin6" id="cantidad" data-options='{"type":"horizontal"}' step=".6" min="0.6" max="3" value="0.6" />
 
         </div>
 
