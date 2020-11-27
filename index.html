@@ -57,6 +57,11 @@
     <title>Saxenda</title>
     <!--funcion para saber si ya esta logado-->
     <script>
+        $("#fecha").datepicker({
+            dateFormat: 'dd/mm/yy',
+            firstDay: 1
+        }).datepicker("setDate", new Date());
+
         function initApp() {
             // Listening for auth state changes. 
             // [START authstatelistener] 
