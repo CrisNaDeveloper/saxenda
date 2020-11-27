@@ -97,6 +97,7 @@ var db = firebase.firestore();
 db.settings({ timestampsInSnapshots: true });
 var fechayhora;
 var fecha;
+var fechareves;
 var timestamp;
 var offset;
 
@@ -130,7 +131,10 @@ function damefechayhora(snap) {
 
     fechayhora = day + "/" + month + "/" + year + " " + curr_hour + ":" + curr_min + ":" + curr_sec;
     fecha = day + "/" + month + "/" + year;
-    //$("#fecha").append(" " + fechayhora);
+    fechareves = year + "-" + month + "-" + day;
+
+    $('#fecha').val(fechareves);
+    //$("#fecha").append(fecha);
 
 
 
