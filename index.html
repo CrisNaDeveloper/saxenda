@@ -131,7 +131,18 @@
 
         <label for="peso">Mi Peso hoy:</label>
 
-        <input type="range" name="peso" id="peso" data-highlight="true" min="0" max="200" value="100">
+        <input type="range" name="peso" id="peso" data-highlight="true" step=".100" min="0" max="200" value="100">
+        <label for="presion">Presión arterial:</label>
+        <input type="text" name="presion" id="presion" data-highlight="true">(PAS/PAD mmHg)
+        <label for="glucosa">Glucosa en ayunas:</label>
+        <input type="text" name="glucosa" id="glucosa" data-highlight="true"> (mmol/L)
+        <label for="hba">HbA1c:</label>
+        <input type="text" name="hba" id="hba" data-highlight="true"> (mmol/L)
+        <label for="otros">otros:</label>
+        <input type="text" name="otros" id="otros" data-highlight="true">
+
+
+
 
         <a href="#" class="ui-btn ui-icon-check ui-btn-icon-left" id="pinchar" name="pinchar">Pinchar</a>
         <a href="#" id="resultados" onclick="verhistorico()" class="ui-btn ui-btn-inline  ui-btn-icon-bullets">Ver Histórico</a>

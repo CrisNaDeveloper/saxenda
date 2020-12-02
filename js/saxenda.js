@@ -37,8 +37,8 @@ function otramaneralogin() {
         signInOptions: [
             // Leave the lines as is for the providers you want to offer your users.
             firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-           // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-           // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+            // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+            // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
             //     firebase.auth.GithubAuthProvider.PROVIDER_ID,
             firebase.auth.EmailAuthProvider.PROVIDER_ID,
             //     firebase.auth.PhoneAuthProvider.PROVIDER_ID,
@@ -199,6 +199,10 @@ function alta(email) {
     var cantidad = $('#cantidad').val();
     var fecha = $('#fecha').val();
     var peso = $('#peso').val();
+    var glucosa = $('#glucosa').val();
+    var presion = $('#presion').val();
+    var hba = $('#hba').val();
+    var otro = $('#otro').val();
 
 
     db.collection("saxenda").add({
@@ -206,7 +210,11 @@ function alta(email) {
             cantidad: cantidad,
             peso: peso,
             fechareal: fechayhora,
-            fecha: fecha
+            fecha: fecha,
+            glucosa: glucosa,
+            hba: hba,
+            presion: presion,
+            otro: otro
 
         })
         .then(function(docRef) {
@@ -290,7 +298,7 @@ function cargaresultado(email) {
 
                 res = doc.data();
 
-                $("#tbodyresultado").append("<tr id='trdentro'><td >" + res.fecha + "<td>" + res.cantidad + "</td><td>" + res.peso + "</td></tr>");
+                $("#tbodyresultado").append("<tr id='trdentro'><td >" + res.fecha + "<td>" + res.cantidad + "</td><>" + res.peso + "</td><td>" + res.glucosa + "</td><>" + res.presion + "</td><td>" + "</td><>" + res.hba + "</td><td>" + "</td><>" + res.otro + "</td><td></tr>");
 
                 $("#tbodyresultado").trigger("create");
                 $("#tablaresultados").table("refresh");
