@@ -298,7 +298,7 @@ function cargaresultado(email) {
 
                 res = doc.data();
 
-                $("#tbodyresultado").append("<tr id='trdentro'><td >" + res.fecha + "<td>" + res.cantidad + "</td><>" + res.peso + "</td><td>" + res.glucosa + "</td><>" + res.presion + "</td><td>" + "</td><>" + res.hba + "</td><td>" + "</td><>" + res.otros + "</td><td></tr>");
+                $("#tbodyresultado").append("<tr id='trdentro'><td >" + res.fecha + "</td><td>" + res.cantidad + "</td><td>" + res.peso + "</td><td>" + res.glucosa + "</td><td>" + res.presion + "</td><td>" + res.hba + "</td><td>" + res.otros + "</td><td></tr>");
 
                 $("#tbodyresultado").trigger("create");
                 $("#tablaresultados").table("refresh");
