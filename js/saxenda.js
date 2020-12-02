@@ -253,7 +253,9 @@ var datos_consult;
 
 function consulta(email) {
 
-    db.collection("saxenda").where("email", "==", email).get()
+    db.collection("saxenda").where("email", "==", email)
+        .orderBy("fecha", "desc")
+        .get()
         .then((querySnapshot) => {
 
             querySnapshot.forEach((doc) => {
@@ -289,6 +291,8 @@ function cargaresultado(email) {
     $("#tbodyresultado").empty();
 
     let res = "";
+    var fecha = new Date();
+    var options = { year: 'numeric', month: 'numeric', day: 'numeric' };
 
     db.collection("saxenda").where("email", "==", email).get()
         .then((querySnapshot) => {
@@ -298,7 +302,7 @@ function cargaresultado(email) {
 
                 res = doc.data();
 
-                $("#tbodyresultado").append("<tr id='trdentro'><td>" + res.fecha + "</td><td>" + res.cantidad + "</td><td>" + res.peso + "</td><td>" + res.glucosa + "</td><td>" + res.presion + "</td><td>" + res.hba + "</td><td>" + res.otros + "</td></tr>");
+                $("#tbodyresultado").append("<tr id='trdentro'><td>" + res.fecha.toLocaleDateString("es-ES", options) + "</td><td>" + res.cantidad + "</td><td>" + res.peso + "</td><td>" + res.glucosa + "</td><td>" + res.presion + "</td><td>" + res.hba + "</td><td>" + res.otros + "</td></tr>");
 
                 $("#tbodyresultado").trigger("create");
                 $("#tablaresultados").table("refresh");
