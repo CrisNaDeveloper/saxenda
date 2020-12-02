@@ -294,7 +294,9 @@ function cargaresultado(email) {
 
     var options = { year: 'numeric', month: 'numeric', day: 'numeric' };
 
-    db.collection("saxenda").where("email", "==", email).get()
+    db.collection("saxenda").where("email", "==", email)
+        .orderBy("fecha", "desc")
+        .get()
         .then((querySnapshot) => {
 
             querySnapshot.forEach((doc) => {
