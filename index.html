@@ -108,7 +108,7 @@
 
     <!-- PAGINA INICIO-->
     <div data-role="page" id="inicio" data-theme="a">
-        <form></form>
+
         <div data-role="header" data-theme="a">
             <a onclick="desconectar()" data-role="button" data-theme="b" data-icon="power" data-iconpos="notext" class="ui-btn-right"> </a>
             <label for='usuario' id='usuario'> </label>
@@ -132,25 +132,26 @@
         <label for="peso">Mi Peso hoy:</label>
 
         <input type="range" name="peso" id="peso" data-highlight="true" step=".100" min="0" max="200" value="100">
-        <fieldset data-role="collapsible">
-        
-            <legend>Legend</legend>
-            <label for="presion">Presión arterial(PAS/PAD mmHg):</label>
-            <input type="text" name="presion" id="presion" data-highlight="true">
-            <label for="glucosa">Glucosa en ayunas(mmol/L):</label>
-            <input type="text" name="glucosa" id="glucosa" data-highlight="true">
-            <label for="hba">HbA1c:</label>
-            <input type="text" name="hba" id="hba" data-highlight="true">
-            <label for="otros">otros:</label>
-            <input type="text" name="otros" id="otros" data-highlight="true">
-    </div>
-    </fieldset>
+        <form>
+            <fieldset data-role="collapsible">
+
+                <legend>Legend</legend>
+                <label for="presion">Presión arterial(PAS/PAD mmHg):</label>
+                <input type="text" name="presion" id="presion" data-highlight="true">
+                <label for="glucosa">Glucosa en ayunas(mmol/L):</label>
+                <input type="text" name="glucosa" id="glucosa" data-highlight="true">
+                <label for="hba">HbA1c:</label>
+                <input type="text" name="hba" id="hba" data-highlight="true">
+                <label for="otros">otros:</label>
+                <input type="text" name="otros" id="otros" data-highlight="true">
+
+            </fieldset>
+        </form>
 
 
+        <a href="#" class="ui-btn ui-icon-check ui-btn-icon-left" id="pinchar" name="pinchar">Pinchar</a>
+        <a href="#" id="resultados" onclick="verhistorico()" class="ui-btn ui-btn-inline  ui-btn-icon-bullets">Ver Histórico</a>
 
-    <a href="#" class="ui-btn ui-icon-check ui-btn-icon-left" id="pinchar" name="pinchar">Pinchar</a>
-    <a href="#" id="resultados" onclick="verhistorico()" class="ui-btn ui-btn-inline  ui-btn-icon-bullets">Ver Histórico</a>
-    </form>
     </div>
 
 
