@@ -202,7 +202,7 @@ function alta(email) {
     var glucosa = $('#glucosa').val();
     var presion = $('#presion').val();
     var hba = $('#hba').val();
-    var otro = $('#otro').val();
+    var otros = $('#otros').val();
 
 
     db.collection("saxenda").add({
@@ -298,7 +298,7 @@ function cargaresultado(email) {
 
                 res = doc.data();
 
-                $("#tbodyresultado").append("<tr id='trdentro'><td >" + res.fecha + "</td><td>" + res.cantidad + "</td><td>" + res.peso + "</td><td>" + res.glucosa + "</td><td>" + res.presion + "</td><td>" + res.hba + "</td><td>" + res.otros + "</td><td></tr>");
+                $("#tbodyresultado").append("<tr id='trdentro'><td>" + res.fecha + "</td><td>" + res.cantidad + "</td><td>" + res.peso + "</td><td>" + res.glucosa + "</td><td>" + res.presion + "</td><td>" + res.hba + "</td><td>" + res.otros + "</td></tr>");
 
                 $("#tbodyresultado").trigger("create");
                 $("#tablaresultados").table("refresh");
