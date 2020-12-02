@@ -214,7 +214,7 @@ function alta(email) {
             glucosa: glucosa,
             hba: hba,
             presion: presion,
-            otro: otro
+            otros: otros
 
         })
         .then(function(docRef) {
