@@ -296,7 +296,9 @@ function cargaresultado(email) {
 
     db.collection("saxenda").where("email", "==", email)
         .orderBy("fecha", "desc")
-        .get()
+        .orderBy("peso", "asc")
+
+    .get()
         .then((querySnapshot) => {
 
             querySnapshot.forEach((doc) => {
