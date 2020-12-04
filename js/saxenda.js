@@ -233,7 +233,7 @@ function alta(email) {
 
 
 
-function borrar() {
+function borrar(email) {
     var borrar = db.collection('saxenda').where('email', '==', email);
     resul.get()
         .then(function(querySnapshot) {
@@ -307,7 +307,7 @@ function cargaresultado(email) {
 
                 res = doc.data();
                 var fechfor = new Date(res.fecha);
-                $("#tbodyresultado").append("< tr id='trdentro'><td>" + fechfor.toLocaleDateString("es-ES", options) + "</td><td>" + res.cantidad + "</td><td>" + res.peso + "</td><td>" + res.glucosa + "</td><td>" + res.presion + "</td><td>" + res.hba + "</td><>" + res.otros + "</td><td><a href='#' onclick='borrar()' data-role='button' data-transition='flip' data-icon='delete'></a></td></tr>");
+                $("#tbodyresultado").append("<tr id='trdentro'><td>" + fechfor.toLocaleDateString("es-ES", options) + "</td><td>" + res.cantidad + "</td><td>" + res.peso + "</td><td>" + res.glucosa + "</td><td>" + res.presion + "</td><td>" + res.hba + "</td><td>" + res.otros + "</td><td><a href='#' onclick=borrar(" + email + ") data-role='button' data-transition='flip' data-icon='delete'></a></td></tr>");
 
                 $("#tbodyresultado").trigger("create");
                 $("#tablaresultados").table("refresh");
