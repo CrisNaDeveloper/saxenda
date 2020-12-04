@@ -244,6 +244,7 @@ function borrar(email) {
 
                 $("#tbodyresultado").trigger("create");
                 alertify.sucess("Registro borrado");
+
             });
         }).catch(function(error) {
             console.error("Error borrando preguntas: ", error);
