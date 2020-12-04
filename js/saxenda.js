@@ -239,12 +239,13 @@ function borrar(email) {
         .then(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
                 doc.ref.delete();
-                $("#tbodyresultado").trigger("create");
+                $("#tbodyresultado").trigger("refresh");
                 $("#tablaresultados").table("refresh");
-                $("#tbodyresultado").trigger("create");
-                alertify.success("Registro borrado");
+                $("#tbodyresultado").trigger("refresh");
+
 
             });
+            alertify.success("Registro borrado");
         }).catch(function(error) {
             console.error("Error borrando preguntas: ", error);
         });
