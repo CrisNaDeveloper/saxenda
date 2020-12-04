@@ -242,7 +242,7 @@ function borrar(email) {
                 $("#tbodyresultado").trigger("create");
                 $("#tablaresultados").table("refresh");
                 $("#tbodyresultado").trigger("create");
-                alertify.sucess("Registro borrado");
+                alertify.success("Registro borrado");
 
             });
         }).catch(function(error) {
