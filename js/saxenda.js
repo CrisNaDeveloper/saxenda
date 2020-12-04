@@ -313,7 +313,7 @@ function cargaresultado(email) {
 
                 res = doc.data();
                 var fechfor = new Date(res.fecha);
-                $("#tbodyresultado").append("<tr id='trdentro'><td>" + fechfor.toLocaleDateString("es-ES", options) + "</td><td>" + res.cantidad + "</td><td>" + res.peso + "</td><td>" + res.glucosa + "</td><td>" + res.presion + "</td><td>" + res.hba + "</td><td>" + res.otros + "</td><td><a href='#' onclick=borrar('" + doc.id + "') data-role='button' data-transition='flip'  data-icon='fa-trash-o'></a></td></tr>");
+                $("#tbodyresultado").append("<tr id='trdentro'><td>" + fechfor.toLocaleDateString("es-ES", options) + "</td><td>" + res.cantidad + "</td><td>" + res.peso + "</td><td>" + res.glucosa + "</td><td>" + res.presion + "</td><td>" + res.hba + "</td><td>" + res.otros + "</td><td><a href='#' onclick=borrar('" + doc.id + "') data-role='button' data-transition='flip'  data-icon='trash'></a></td></tr>");
 
                 $("#tbodyresultado").trigger("create");
                 $("#tablaresultados").table("refresh");
