@@ -241,7 +241,6 @@ function borrar(email) {
                 doc.ref.delete();
                 $("#tbodyresultado").trigger("create");
                 $("#tablaresultados").table("refresh");
-
                 $("#tbodyresultado").trigger("create");
                 alertify.sucess("Registro borrado");
 
