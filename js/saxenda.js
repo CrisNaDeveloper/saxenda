@@ -235,7 +235,7 @@ function alta(email) {
 
 function borrar(email) {
     var borrar = db.collection('saxenda').where('email', '==', email);
-    resul.get()
+    borrar.get()
         .then(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
                 doc.ref.delete();
