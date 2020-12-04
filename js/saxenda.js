@@ -239,7 +239,7 @@ function borrar(email) {
         .then(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
                 doc.ref.delete();
-                alertify("Registro borrado");
+                alertify.sucess("Registro borrado");
             });
         }).catch(function(error) {
             console.error("Error borrando preguntas: ", error);
