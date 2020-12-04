@@ -239,6 +239,10 @@ function borrar(email) {
         .then(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
                 doc.ref.delete();
+                $("#tbodyresultado").trigger("create");
+                $("#tablaresultados").table("refresh");
+
+                $("#tbodyresultado").trigger("create");
                 alertify.sucess("Registro borrado");
             });
         }).catch(function(error) {
