@@ -60,29 +60,29 @@
         function initApp() {
             // Listening for auth state changes. 
             // [START authstatelistener] 
-            firebase.auth().onAuthStateChanged(function(user) {
-
-                if (user) {
-
-                    email = user.email;
-
-                    $.mobile.changePage("#inicio", {
-                        transition: "slide",
-                        reverse: true
-                    });
-
-                } else {
 
 
-                    $.mobile.changePage("#login", {
-                        transition: "slide",
-                        reverse: true
-                    });
+            if (user) {
+
+                email = user.email;
+
+                $.mobile.changePage("#inicio", {
+                    transition: "slide",
+                    reverse: true
+                });
+
+            } else {
 
 
-                }
+                $.mobile.changePage("#login", {
+                    transition: "slide",
+                    reverse: true
+                });
 
-            });
+
+            }
+
+
         }
     </script>
 
@@ -176,16 +176,16 @@
                     <th data-priority='3' class="ui-table-priority-3 ui-table-cell-visible">
                         <h4>Peso</h4>
                     </th>
-                    <th data-priority='4'>
+                    <th>
                         <h4>Glucosa</h4>
                     </th>
-                    <th data-priority='5'>
+                    <th>
                         <h4>Presion</h4>
                     </th>
-                    <th data-priority='6'>
+                    <th>
                         <h4>HbA1c</h4>
                     </th>
-                    <th data-priority='7'>
+                    <th>
                         <h4>Otros</h4>
                     </th>
 
