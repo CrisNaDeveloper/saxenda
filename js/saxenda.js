@@ -33,7 +33,7 @@ function otramaneralogin() {
     var uiConfig = {
         signInFlow: 'popup',
         signInSuccessUrl: 'index.html#inicio',
-
+  	 credentialHelper: firebaseui.auth.CredentialHelper.NONE,
         signInOptions: [
             // Leave the lines as is for the providers you want to offer your users.
           //  firebase.auth.GoogleAuthProvider.PROVIDER_ID,
